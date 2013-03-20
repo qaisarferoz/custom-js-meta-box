@@ -54,17 +54,17 @@ Class Custom_JavaScript_Meta_Box {
 		
 	 		$custom_field = trim( get_post_meta( $post->ID, '_custom_js' , true ) );
 			
-	 		if( !empty(  $custom_field ) )
-echo '<!-- JavaScript FROM META BOX -->
-<script type="text/javascript">
-//<![CDATA[ 
-';
-echo $custom_field;
-echo '
-//]]>
-</script>
-';
-				
+	 		if( !empty(  $custom_field ) ):
+				echo '<!-- JavaScript FROM META BOX -->
+				<script type="text/javascript">
+				//<![CDATA[ 
+				';
+				echo $custom_field;
+				echo '
+				//]]>
+				</script>
+				';
+			endif;
 		endif;
 	}
 	
