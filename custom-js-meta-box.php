@@ -141,11 +141,11 @@ Class Custom_JavaScript_Meta_Box {
 		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
 			return $post_id;
 		
-		if ( !wp_verify_nonce( $_POST['custom_js_mate_box_noncename'], plugin_basename(__FILE__) ))
+		if (isset($_POST['custom_js_mate_box_noncename']) && !wp_verify_nonce( $_POST['custom_js_mate_box_noncename'], plugin_basename(__FILE__) ))
 				return $post_id;
 		
 		// only update the data if it is a string	
-		if( is_string( $_POST['custom_js_meta_box'] ) )
+		if(isset($_POST['custom_js_meta_box']) && is_string( $_POST['custom_js_meta_box'] ) )
 			add_post_meta( $post_id, '_custom_js', $_POST['custom_js_meta_box'], true) or update_post_meta( $post_id, '_custom_js', $_POST['custom_js_meta_box'] );
 		
 		return $post_id;
