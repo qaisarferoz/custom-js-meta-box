@@ -109,9 +109,17 @@ Class Custom_JavaScript_Meta_Box {
 	 * @access public
 	 * @return void
 	 */
-	function display_meta_box() {
-		global $post;
-		$custom_js = get_post_meta( $post->ID, '_custom_js', true );
+	function display_meta_box( $post ) {
+
+		$post_id = $post->ID;
+
+        if ( 'attachment' === $post->post_type ) {
+                // Other plugins, such as the portoflio slideshow plugin override the global $post, which causes problems
+                $post_id = absint( $_GET['post'] );
+				$post = get_post( $post_id );
+        }
+
+		$custom_js = get_post_meta( $post_id, '_custom_js', true );
 
    		// Use nonce for verification
    		echo '<input type="hidden" name="custom_js_mate_box_noncename" id="custom_js_mate_box_noncename" value="' .wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
