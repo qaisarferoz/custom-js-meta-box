@@ -5,7 +5,7 @@ Plugin Name: Custom JavaScript Meta Box
 Plugin URI:
 Description: Abiliy to place custom JavaScript on individual pages and posts. Once enabled a custom text box will apear on page and post write panels and the custom JavaScript will be written at the bottom of the HTML document.
 Author: CTLT Dev
-Version: 1.0
+Version: 1.0.1
 Author URI:
 
 */
